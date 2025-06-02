@@ -172,94 +172,91 @@ def desenhar_tela(tela, passaros, canos, chao, pontos):
     chao.desenhar(tela)
     pg.display.update()
 
+def iniciar_jogo():
+    """Função para inicializar ou reiniciar o estado do jogo."""
+    return [Passaro(230, 350)], Chao(730), [Cano(700)], 0, False # passaros, chao, canos, pontos, game_over
 
 def main():
-    passaros = [Passaro(230, 350)]
-    chao = Chao(730)
-    canos = [Cano(700)]
     tela = pg.display.set_mode((TELA_LARGURA, TELA_ALTURA))
-    pontos = 0
     relogio = pg.time.Clock()
 
     rodando = True
-    game_over = False
-    restart_requested = False  # Add this line to define the restart_requested variable
+    
+    passaros, chao, canos, pontos, game_over = iniciar_jogo() # Inicializa o jogo
+
     while rodando:
         relogio.tick(30)
 
-        # interação com o usuário
-        for evento in pg.event.get():
-            if evento.type == pg.QUIT:
-                rodando = False
-            if evento.type == pg.KEYDOWN:
-                if evento.key == pg.K_SPACE:
-                    if not game_over:  # Only allow jumping if the game is not over
+        if not game_over: # Se o jogo NÃO acabou, processa a lógica normal do jogo
+            for evento in pg.event.get():
+                if evento.type == pg.QUIT:
+                    rodando = False
+                if evento.type == pg.KEYDOWN:
+                    if evento.key == pg.K_SPACE:
                         for passaro in passaros:
                             passaro.pular()
 
-        # If a restart was requested, reset the game
-        if restart_requested:
-            passaros = [Passaro(230, 350)]
-            chao = Chao(730)
-            canos = [Cano(700)]
-            pontos = 0
-            game_over = False
-            restart_requested = False  # Reset restart request
+            # Mover as coisas
+            for passaro in passaros:
+                passaro.mover()
+            chao.mover()
 
-        # mover as coisas
-        for passaro in passaros:
-            passaro.mover()
-        chao.mover()
+            adicionar_cano = False
+            remover_canos = []
+            for cano in canos:
+                for i, passaro in enumerate(passaros):
+                    if cano.colidir(passaro):
+                        passaros.pop(i)
+                        game_over = True # O jogo acaba ao colidir com o cano
+                        break # Sai do loop interno se o passaro colidiu
+                
+                # Se o game_over foi setado aqui, não precisamos processar mais este cano ou adicionar novos
+                if game_over:
+                    break
 
-        adicionar_cano = False
-        remover_canos = []
-        for cano in canos:
-            for i, passaro in enumerate(passaros):
-                if cano.colidir(passaro):
-                    passaros.pop(i)
-                    game_over = True
-                if not cano.passou and passaro.x > cano.x:
+                if not cano.passou and len(passaros) > 0 and passaros[0].x > cano.x: # Verifica se ainda há pássaros
                     cano.passou = True
                     adicionar_cano = True
-            cano.mover()
-            if cano.x + cano.CANO_TOPO.get_width() < 0:
-                remover_canos.append(cano)
+                cano.mover()
+                if cano.x + cano.CANO_TOPO.get_width() < 0:
+                    remover_canos.append(cano)
+            
+            if adicionar_cano:
+                pontos += 1
+                canos.append(Cano(600))
+            for cano in remover_canos:
+                canos.remove(cano)
 
-        if adicionar_cano:
-            pontos += 1
-            canos.append(Cano(600))
-        for cano in remover_canos:
-            canos.remove(cano)
+            for i, passaro in enumerate(passaros):
+                if (passaro.y + passaro.imagem.get_height()) > chao.y or passaro.y < 0:
+                    passaros.pop(i)
+                    game_over = True # O jogo acaba ao tocar no chão ou sair da tela para cima
 
-        for i, passaro in enumerate(passaros):
-            if (passaro.y + passaro.imagem.get_height()) > chao.y or passaro.y < 0:
-                passaros.pop(i)
+            if not passaros and not game_over: # Se não há mais pássaros e não setamos game_over antes (ex: por colisão)
+                game_over = True
 
-        # Check for game over condition
-        for passaro in passaros:
-            if passaro.y + passaro.imagem.get_height() >= chao.y:
-                game_over = True  # Set game_over to True if the bird hits the ground
-
-        if game_over:
+            desenhar_tela(tela, passaros, canos, chao, pontos)
+        
+        else: # Se o jogo acabou (game_over é True)
+            # Desenha a tela de Game Over
             tela.fill((0, 0, 0))
-            texto = FONTE_PONTOS.render("Game Over!", 1, (255, 255, 255))
-            tela.blit(texto, (TELA_LARGURA // 2 - texto.get_width() // 2, TELA_ALTURA // 2 - texto.get_height() // 2))
-            texto = FONTE_PONTOS.render("Pressione ESPAÇO para reiniciar", 1, (255, 255, 255))
-            tela.blit(texto, (TELA_LARGURA // 2 - texto.get_width() // 2, TELA_ALTURA // 2 + 50))
+            texto_game_over = FONTE_PONTOS.render("Game Over!", 1, (255, 255, 255))
+            tela.blit(texto_game_over, (TELA_LARGURA // 2 - texto_game_over.get_width() // 2, TELA_ALTURA // 2 - texto_game_over.get_height() // 2))
+            
+            texto_reiniciar = FONTE_PONTOS.render("Pressione ENTER para reiniciar", 1, (255, 255, 255))
+            tela.blit(texto_reiniciar, (TELA_LARGURA // 2 - texto_reiniciar.get_width() // 2, TELA_ALTURA // 2 + 50))
             pg.display.update()
 
+            # Processa eventos APENAS para reiniciar ou sair
             for evento in pg.event.get():
                 if evento.type == pg.QUIT:
                     rodando = False
                 elif evento.type == pg.KEYDOWN:
-                    if evento.key == pg.K_SPACE:
-                        restart_requested = True  # Request a restart if spacebar is pressed
-
-        # Update display
-        desenhar_tela(tela, passaros, canos, chao, pontos)
-
-if __name__ == '__main__':
-    pg.init()
-    main()
+                    if evento.key == pg.K_RETURN: # Detecta a tecla ENTER para reiniciar
+                        passaros, chao, canos, pontos, game_over = iniciar_jogo() # Reinicia o jogo
+                        
     pg.quit()
     quit()
+
+if __name__ == '__main__':
+    main()
