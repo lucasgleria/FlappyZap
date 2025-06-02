@@ -11,7 +11,6 @@ Uma cópia do jogo [FlappyBird](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&
 ## | O que encontrarei nesse projeto?
 
 * Uma cópia do jogo FlappyBird, funcional
-    * Obs: A função de restart não está funcionando 100% corretamente, é possível que haja alguns glitches.
 
 ## | Tecnologias utilizadas
 
