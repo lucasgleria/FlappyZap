@@ -12,16 +12,17 @@
 ## 📌 Sumário  
 
 1. [Sobre o Projeto](#-sobre-o-projeto)  
-1. [Tecnologias Principais](#-tecnologias-principais)  
-2. [Funcionalidades](#-funcionalidades)  
-3. [Pré-requisitos](#-pré-requisitos)  
-4. [Instalação](#-instalação)  
-5. [Como Jogar](#-como-jogar)  
-6. [Estrutura do Projeto](#-estrutura-do-projeto)  
-7. [Contribuição](#-contribuição)  
-8. [Licença](#-licença)  
-9. [Contato](#-contato)  
-9. [Recursos Adicionais](#-recursos-adicionais)  
+2. [Objetivos](#-)
+3. [Tecnologias](#-tecnologias-principais)
+4. [Funcionalidades](#-funcionalidades)  
+5. [Pré-requisitos](#%EF%B8%8F-pré-requisitos)  
+6. [Instalação](#%EF%B8%8F-instalação)  
+7. [Como Jogar](#-como-jogar)  
+8. [Estrutura do Projeto](#-estrutura-do-projeto)  
+9. [Contribuição](#-contribuiça&o)  
+10. [Licença](#-licença)  
+11. [Contato](#-contato)  
+12. [Recursos Adicionais](#-recursos-adicionais)  
 
 
 
@@ -32,6 +33,13 @@ O **FlappyZap** é uma paródia do clássico jogo *Flappy Bird* utilizando a log
 - **Motivação**: Aprender e praticar conceitos de programação de jogos e animações com Python oferecendo entretenimento com um pouco de humor.  
 - **Público-alvo**: Estudantes de programação, entusiastas de jogos e desenvolvedores iniciantes.  
 
+
+## 🎯 Objetivos
+### 🛠️ Técnicos
+
+- Demonstrar o uso prático da biblioteca pygame para manipulação de gráficos, eventos e animações em Python.
+- Implementar mecânicas básicas de jogos 2D, como detecção de colisã, sistema de pontuação e controle de fluxo de jogo (start/game over/restart)
+- Promover boas práticas de organização de código em projetos python, facilitando a leitura, manutenção e expansão do jogo 
 
 
 ## 🚀 Tecnologias utilizadas
