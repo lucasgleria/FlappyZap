@@ -12,8 +12,8 @@
 ## 📌 Sumário  
 
 1. [Sobre o Projeto](#-sobre-o-projeto)  
-2. [Objetivos](#-)
-3. [Tecnologias](#-tecnologias-principais)
+2. [Objetivos](#-objetivos)
+3. [Tecnologias](#-tecnologias)
 4. [Funcionalidades](#-funcionalidades)  
 5. [Pré-requisitos](#%EF%B8%8F-pré-requisitos)  
 6. [Instalação](#%EF%B8%8F-instalação)  
@@ -95,9 +95,9 @@ python app.py
 ```
 
 2. Interaja com a janela do jogo!
-  2.1 **Controles**:  
+  2.1 **Controles**:    
      - **Espaço**: Faz o pássaro pular.
-     - **Enter**: Reinicia o jogo após o Game Over 
+     - **Enter**: Reinicia o jogo após o Game Over  
   2.2 **Objetivo**: Passe pelos canos sem tocá-los ou no chão.  
   2.3 **Game Over**: Se bater, você perdeu!  
 
