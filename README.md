@@ -94,7 +94,7 @@ pip install pygame
 python app.py
 ```
 
-2. Interaja com a janela do jogo!
+2. Interaja com a janela do jogo!  
   2.1 **Controles**:    
      - **Espaço**: Faz o pássaro pular.
      - **Enter**: Reinicia o jogo após o Game Over  
