@@ -75,17 +75,31 @@ Como o jogo inicia uma GUI automaticamente, não é necessária instalação com
 1. **Clone o repositório**:  
    ```bash
    git clone https://github.com/lucasgleria/FlappyZap.git
-   ```  
+   ```
 
+2. **Navegue até o diretório do projeto**:
+```bash
+cd game
+```
 
+3. Instale as dependências:
+```bash
+pip install pygame
+```
 
-## 🎮 Como Jogar  
+## ❗ Como Jogar  
 
-1. **Inicie o jogo**: Abra `game/app.py` na sua IDE.  
-2. **Controles**:  
-   - **Espaço**: Faz o pássaro pular.  
-3. **Objetivo**: Passe pelos canos sem tocá-los ou no chão.  
-4. **Game Over**: Se bater, clique **enter** para reiniciar.  
+1. Inicie o programa:
+```bash
+python app.py
+```
+
+2. Interaja com a janela do jogo!
+  2.1 **Controles**:  
+     - **Espaço**: Faz o pássaro pular.
+     - **Enter**: Reinicia o jogo após o Game Over 
+  2.2 **Objetivo**: Passe pelos canos sem tocá-los ou no chão.  
+  2.3 **Game Over**: Se bater, você perdeu!  
 
 ### ▶️ Demonstração  
 
