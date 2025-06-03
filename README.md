@@ -98,8 +98,9 @@ python app.py
   2.1 **Controles**:    
      - **Espaço**: Faz o pássaro pular.
      - **Enter**: Reinicia o jogo após o Game Over  
-  2.2 **Objetivo**: Passe pelos canos sem tocá-los ou no chão.  
-  2.3 **Game Over**: Se bater, você perdeu!  
+
+3. **Objetivo**: Passe pelos canos sem tocá-los ou no chão.  
+4. **Game Over**: Se bater, você perdeu!  
 
 ### ▶️ Demonstração  
 
