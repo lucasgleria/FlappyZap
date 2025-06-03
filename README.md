@@ -19,7 +19,7 @@
 6. [Instalação](#%EF%B8%8F-instalação)  
 7. [Como Jogar](#-como-jogar)  
 8. [Estrutura do Projeto](#-estrutura-do-projeto)  
-9. [Contribuição](#-contribuiça&o)  
+9. [Contribuição](-contribuição)  
 10. [Licença](#-licença)  
 11. [Contato](#-contato)  
 12. [Recursos Adicionais](#-recursos-adicionais)  
